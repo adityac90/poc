@@ -20,6 +20,8 @@ public class MockThirdPartyRestApiController {
         System.out.println("gboRegion  ######################################## " + gboRegionValue);
         response.addHeader("Connection", "keep-alive");
         Cookie cookie = new Cookie("gbo_region", gboRegionValue);
+        cookie.setMaxAge(1200);
+        System.out.println("max age set###########################");
         response.addCookie(cookie);
 
     }

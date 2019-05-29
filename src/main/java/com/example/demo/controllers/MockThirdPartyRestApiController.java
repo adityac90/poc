@@ -18,7 +18,8 @@ public class MockThirdPartyRestApiController {
         String gboRegionValue = randomNumber > 30 ? "east" : "west";
         System.out.println("randomNumber ######################################## " + randomNumber);
         System.out.println("gboRegion  ######################################## " + gboRegionValue);
-       // response.addHeader("Connection", "keep-alive");
+        response.addHeader("Connection", "Keep-Alive");
+        response.addHeader("Content-Type", "application/json");
         Cookie cookie = new Cookie("gbo_region", gboRegionValue);
         cookie.setMaxAge(1200);
         System.out.println("max age set###########################");

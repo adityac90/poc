@@ -13,6 +13,15 @@ import java.util.Random;
 public class MockThirdPartyRestApiController {
     @GetMapping("/gbo-location/api/v2/locations/national/mobile/{locationCode}")
     public void getThirdPartyResponseWithCookies(@PathVariable String locationCode, HttpServletRequest request, HttpServletResponse response) {
+        
+        HttpSession oldSession = request.getSession(false);
+        if (oldSession != null) {
+            oldSession.invalidate();
+        }
+        HttpSession newSession = request.getSession(true);
+        //setting session to expiry in 5 mins
+        newSession.setMaxInactiveInterval(5 * 60);
+
         Random random = new Random();
         int randomNumber = random.nextInt(100);
         String gboRegionValue = randomNumber > 30 ? "east" : "west";
